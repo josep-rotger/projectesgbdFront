@@ -1,1 +1,27 @@
-<p>Aquí anirà un JOC</p>
+<!--* Si vull que en comptes de boto, es vagi actualitzant per cada lletra que escric fare servir: 
+    Introdueix el joc que vols buscar: <input type="text" #jocBuscat (keyup)="0">
+    (i borraria el boto) *-->
+    
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pàgina joc</title>
+</head>
+<body>
+    <div class="content">
+        <img src={{getImatge()}}>
+        <div class="text-container">
+            <h2>Nom del Joc: {{getNom()}}</h2>
+            <p>Categoria del Joc: {{getCategoria()}}</p>
+            <p>{{getDescripcio()}}</p>
+            <div class="rating">
+                <span *ngFor="let estrella of obtenirNumeroEstrelles()" [class.active]="estrella.activa"></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

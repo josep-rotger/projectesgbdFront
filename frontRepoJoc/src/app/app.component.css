@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+body, html {
+    height: 100%;
+}
+
+header {
+    background-color: #8133ff; /* color fons del header */
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    color: #fff; /* color texte */
+    font-size: 2em; /* tamany del texte */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* ombra del texte */
+    line-height: 1; /* Ajusta este valor según sea necesario */
+}
+
+.header-icons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.config-icon,
+.cart-icon {
+    font-size: 20px;
+    color: #fff;
+    margin: 0 10px;
+    cursor: pointer;
+}
