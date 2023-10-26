@@ -11,11 +11,11 @@
 </head>
 <body>
     <div class="content">
-        <img src={{getImatge()}}>
+        <img src={{getImage()}}>
         <div class="text-container">
-            <h2>Nom del Joc: {{getNom()}}</h2>
-            <p>Categoria del Joc: {{getCategoria()}}</p>
-            <p>{{getDescripcio()}}</p>
+            <h2>Nom del Joc: {{getName()}}</h2>
+            <p>Categoria del Joc: {{getGenre()}}</p>
+            <p>{{getDescription()}}</p>
             <div class="rating">
                 <span *ngFor="let estrella of obtenirNumeroEstrelles()" [class.active]="estrella.activa"></span>
             </div>

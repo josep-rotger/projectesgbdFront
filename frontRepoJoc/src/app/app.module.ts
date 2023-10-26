@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { JocComponent } from './joc/joc.component';
+import { JocComponent } from './Game/Game.component';
 
 @NgModule({
   declarations: [
