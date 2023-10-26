@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border: 2px solid #ddd; /* Color del borde */
+    border-radius: 10px; /* radi costats rodons */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* ombra resaltada */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    margin-right: 20px; /* Espacio entre la imagen y el texto */
+}
+
+.text-container {
+    flex: 1;
+}
+
+h2 {
+    color: #333;
+}
+
+p {
+    color: #666;
+}
+
+.rating {
+    display: inline-block;
+    font-size: 24px; /* Mida de les estrelles */
+  }
+  
+  .rating span:before {
+    content: "\2605"; /* Codi Unicode per una estrella solida */
+    color: #ddd; /* Color de les estrelles desactivades */
+  }
+  
+  .rating span.active:before {
+    color: orange; /* Color de les estrelles activades */
+  }
