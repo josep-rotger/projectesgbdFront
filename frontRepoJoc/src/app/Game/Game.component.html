@@ -1,5 +1,5 @@
 <table>
-    <tr *ngFor="let game of games">
+  <tr *ngFor="let game of games" (click)="navigateToGameDetails(game.id)" [routerLink]="['/game-details', game.id]">
       <td>
         <div class="content">
           <!--<img src={{game.getImage()}}>-->
