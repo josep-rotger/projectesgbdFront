@@ -7,6 +7,9 @@ import { Game } from './Game';
   providedIn: 'root'
 })
 export class GameService {
+  getGameDetails(gameId: number) {
+    throw new Error('Method not implemented.');
+  }
   private baseUrl: string = "http://localhost:8080/apis/game";
 
   constructor(private http: HttpClient) { }
