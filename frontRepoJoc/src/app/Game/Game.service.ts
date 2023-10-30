@@ -30,6 +30,11 @@ export class GameService {
     );
   }
 
+  findById(id: number): Observable<Game> {
+    const url = `${this.baseUrl}/findById/${id}`;
+    return this.http.get<Game>(url);
+  }
+
   insertGame(game: Game): Observable<Game> {
     const url = this.getFullUrl('insert');
     return this.http.post<Game>(url, game);

@@ -1,4 +1,9 @@
 <div>
-    <p>game-details works!</p>
+    <div *ngIf="game">
+        <h2>Detalles del Juego</h2>
+        <p><strong>Nombre:</strong> {{ game.name }}</p>
+        <p><strong>Descripción:</strong> {{ game.description }}</p>
+        
+      </div>
     <button (click)="goBack()">Tornar a la llista de Jocs</button>
 </div>
