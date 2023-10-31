@@ -14,13 +14,8 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* ombra resaltada */
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-    margin-right: 20px; /* Espacio entre la imagen y el texto */
-}
-
 .text-container {
+    padding-left: 10px;
     flex: 1;
 }
 
@@ -44,4 +39,15 @@ p {
   
   .rating span.active:before {
     color: orange; /* Color de les estrelles activades */
+  }
+
+  .image-container {
+    max-width: 200px; /* Ajusta el ancho máximo según tus necesidades */
+    max-height: 200px; /* Ajusta la altura máxima según tus necesidades */
+    overflow: hidden;
+  }
+  
+  .image-container img {
+    width: 100%;
+    height: auto;
   }

@@ -1,9 +1,28 @@
 <div>
-    <div *ngIf="game">
-        <h2>Detalles del Juego</h2>
-        <p><strong>Nombre:</strong> {{ game.name }}</p>
-        <p><strong>Descripción:</strong> {{ game.description }}</p>
-        
+  <div *ngIf="game">
+    <button class="back-button" (click)="goBack()">Tornar a la llista de Jocs</button>
+    <div class="content">
+      <div class="image-container">
+        <img *ngIf="game.img" [src]="game.img" alt="Imagen del juego">
+        <h3><strong>Descripció:</strong> {{ game.description }}</h3>
       </div>
-    <button (click)="goBack()">Tornar a la llista de Jocs</button>
+
+      <div class="details-container">
+        <div class="info-container">
+          <div class="name-rating-container">
+          <h1><strong>Nom:</strong> {{ game.name }}</h1>
+          <div class="rating">
+            <span *ngFor="let estrella of estrelles" [class.active]="estrella.activa"></span>
+          </div>
+        </div>
+
+          <h3><strong>companyia:</strong> {{ game.company }}</h3>
+          <h3><strong>genre:</strong> {{ game.genre }}</h3>
+          <h3><strong>subgenre:</strong> {{ game.subgenre }}</h3>
+          <h3><button class="price-button"><span class="play-icon">&#9654;</span> {{ game.price }}€</button></h3>        
+
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
