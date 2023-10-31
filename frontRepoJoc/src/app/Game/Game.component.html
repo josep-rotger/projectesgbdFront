@@ -2,14 +2,13 @@
   <tr *ngFor="let game of games" (click)="navigateToGameDetails(game.id)" [routerLink]="['/game-details', game.id]">
       <td>
         <div class="content">
-          <!--<img src={{game.getImage()}}>-->
+          <div class="image-container">
+            <img *ngIf="game.img" [src]="game.img" alt="Imagen del juego">
+          </div>
           <div class="text-container">
             <h2>Nom del Joc: {{game.name}}</h2>
             <p>Categoria del Joc: {{game.genre}}</p>
             <p>{{game.description}}</p>
-            <div class="rating">
-              <!--<span *ngFor="let estrella of obtenirNumeroEstrelles()" [class.active]="estrella.activa"></span>-->
-            </div>
           </div>
         </div>
       </td>
