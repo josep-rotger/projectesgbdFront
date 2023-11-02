@@ -5,9 +5,9 @@ export class Game {
   public genre: string;
   public subgenre: string;
   public description: string;
-  public img;
+  public img: string;
   public rating: number;
-  public price;
+  public price: number;
 
   // Constructor
   constructor() {

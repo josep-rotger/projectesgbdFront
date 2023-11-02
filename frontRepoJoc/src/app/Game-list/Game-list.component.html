@@ -1,0 +1,16 @@
+<br>
+<h2 class="interest-heading">També et pot interessar:</h2>
+<div *ngIf="games && games.length">
+    
+    <div class="game-container">
+        <div *ngFor="let game of games" class="game-item" [routerLink]="['/game-details', game.id]">
+          <img [src]="game.img" alt="{{ game.name }} Image" width="100" height="100">
+          <h3>{{ game.name }}</h3>
+        </div>
+    </div>
+
+
+  <div *ngIf="games && games.length === 0">
+    No hi ha jocs disponibles.
+  </div>
+  
