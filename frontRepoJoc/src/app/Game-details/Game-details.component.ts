@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { GameService } from '../Game/Game.service';
 import { Game } from './Game';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-game-details',
@@ -12,10 +13,10 @@ import { Location } from '@angular/common';
 export class GameDetailsComponent {
   game: Game = new Game();
   estrelles: any[] = [];
-  constructor(private route: ActivatedRoute, private gameService: GameService, private location: Location) {}
+  constructor(private route: ActivatedRoute, private gameService: GameService, private location: Location, private router: Router) {}
 
   goBack(): void {
-    this.location.back();
+    this.router.navigate(['/games']);
   }
 
   ngOnInit() {
