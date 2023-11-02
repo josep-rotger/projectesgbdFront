@@ -13,7 +13,7 @@ export class GameListComponent implements OnInit {
   games: Game[] = [];
   currentUrl: string;
   gameId: number = -1;
-
+  genre: string = 'Construcció';
 
 
   constructor(private gameService: GameService, private route: ActivatedRoute, private router: Router) {
@@ -28,12 +28,22 @@ export class GameListComponent implements OnInit {
   }
 
   private loadGameData(): void {
-      this.gameService.getGames().subscribe((games) => {
-      if (games && games.content) {
-        this.games = games.content.filter((game: { id: any; }) => game.id !== this.gameId); // perque aixi em retorni tots els jocs menys l'actual
-      } else {
-        this.games = [];
-      }
-    });
+    if (this.gameId !== -1) {
+      this.gameService.findById(this.gameId).subscribe(
+        (game: { genre: string; }) => {
+          const genre = game.genre || '';
+          this.gameService.getGamesByGenre(genre).subscribe((games) => {
+            if (games && games.length) {
+              this.games = games.filter((game) => game.id !== this.gameId);
+            } else {
+              this.games = [];
+            }
+          });
+        },
+        (error: any) => {
+          console.error('Error al obtenir detalls del juego:', error);
+        }
+      );
+    }
   }
 }
