@@ -7,18 +7,27 @@ import { Game } from './Game.model';
   providedIn: 'root',
 })
 export class GameService {
-  private apiUrl = "http://localhost:8080/apis/game/findAll";
+  private apiUrl = "http://localhost:8080/apis/game";
 
   constructor(private http: HttpClient) {}
 
-  getGames(): Observable<any> {
-    return this.http.get(this.apiUrl);
+  getGamesByGenre(genre: string): Observable<Game[]> {
+    const url = `${this.apiUrl}/findByGenre/${genre}`;
+    return this.http.get<Game[]>(url).pipe(
+      catchError(this.handleError)
+    );
+  }
+  
+  findById(id: number): Observable<Game> {
+    const url = `${this.apiUrl}/findById/${id}`;
+    return this.http.get<Game>(url).pipe(
+      catchError(this.handleError)
+    );
   }
 
   private handleError(error: HttpErrorResponse) {
     console.error('Error en la solicitud:', error);
-    // Puedes manejar el error según tus necesidades
-    return throwError('Algo salió mal; por favor, inténtalo de nuevo más tarde.');
+    return throwError('Algo ha sortit malament');
   }
   
 }
