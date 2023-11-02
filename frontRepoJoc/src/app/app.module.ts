@@ -7,11 +7,11 @@ import { AppComponent } from './app.component';
 import { GameComponent } from './Game/Game.component';
 import { GameDetailsComponent } from './Game-details/Game-details.component';
 import { RouterModule } from '@angular/router';
+import { ReviewComponent } from './review/review.component';
 
 @NgModule({
   declarations: [
-    AppComponent, GameComponent, GameDetailsComponent
-  ],
+    AppComponent, GameComponent, GameDetailsComponent, ReviewComponent,],
   imports: [
     BrowserModule,
     AppRoutingModule,

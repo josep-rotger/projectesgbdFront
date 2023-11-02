@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { Game } from './Game';
+import { Review } from '../review/Review';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,16 @@ export class GameService {
     );
   }
 
+  findAllReviewsByGameId():Observable<Review[]> {
+    const url = this.getFullUrl('findAllReviewsByGameId');
+    return this.http.get<any>(url).pipe(
+      map(response => response.content),
+      catchError(error => {
+        console.error('Error al obtenir dades del joc:', error);
+        return throwError(error);
+      })
+    );
+  }
   insertGame(game: Game): Observable<Game> {
     const url = this.getFullUrl('insert');
     return this.http.post<Game>(url, game);
