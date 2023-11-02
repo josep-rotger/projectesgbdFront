@@ -1,0 +1,40 @@
+.game-container {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding: 20px;
+    border: 3px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+  
+  .game-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: 3px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: 20px;
+    width: 150px; 
+    text-align: center; 
+  }
+
+  .game-item img {
+    width: 100%; 
+    height: auto; 
+  }
+
+  .game-item h3 {
+    margin-top: 5px;  
+    margin-bottom: 5px;
+  }
+
+  .interest-heading {
+   margin-left: 80px;
+   margin-bottom: 10px;
+  }

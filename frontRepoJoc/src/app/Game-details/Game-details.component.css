@@ -1,0 +1,105 @@
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .info-container h3 {
+    margin: 5px 0; /* Ajusta el espai vertical entre els elements dins del info-container */
+  }
+  
+  .name-rating-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .name-rating-container p {
+    margin-right: 10px; /* Ajusta el espai entre el nom i la calificació */
+  }
+  
+  .rating {
+    display: inline-block;
+    font-size: 24px; /* Mida de les estrelles */
+    margin-left: 30px;
+  }
+  
+  .rating span {
+    margin-right: 3px; /* Ajusta el espacio entre las estrellas */
+  }
+
+  .rating span:before {
+    content: "\2605"; /* Codi Unicode per una estrella solida */
+    color: #ddd; /* Color de les estrelles desactivades */
+  }
+
+  .rating span.active:before {
+    color: orange; /* Color de les estrelles activades */
+  }
+
+  .details-container {
+    padding-left: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .image-container {
+    max-width: 600px;
+    max-height: 400px;
+    overflow: hidden;
+    margin-right: 20px; /* Espai entre la imatge i els detalls */
+  }
+  
+  .image-container img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px; /* Espai entre la imatge i la descripció */
+  }
+  
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border: 3px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+  .price-button {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .play-icon {
+    margin-right: 5px; /* Ajusta el espacio entre el icono y el texto del precio */
+    font-size: 16px; /* Ajusta el tamaño del icono según tus preferencias */
+  }
+
+  .page-container {
+    position: relative;
+  }
+  
+  .back-button {
+    position: absolute;
+    top: 110px;
+    right: 80px;
+    font-size: 12px;
+    background-color: rgb(107, 136, 233); /* Color azul claro */
+    padding: 15px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white; /* Color del texto del botón */
+  }
+  
+  
+  
+  
+  

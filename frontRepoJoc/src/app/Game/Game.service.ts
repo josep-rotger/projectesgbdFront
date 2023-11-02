@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, map, throwError } from 'rxjs';
-import { Game } from './Game';
+import { Game } from '../Game-details/Game';
 import { Review } from '../review/Review';
 
 @Injectable({
@@ -29,6 +29,16 @@ export class GameService {
         return throwError(error);
       })
     );
+  }
+
+  findById(id: number): Observable<Game> {
+    const url = `${this.baseUrl}/findById/${id}`;
+    return this.http.get<Game>(url);
+  }
+
+  findById(id: number): Observable<Game> {
+    const url = `${this.baseUrl}/findById/${id}`;
+    return this.http.get<Game>(url);
   }
 
   findAllReviewsByGameId():Observable<Review[]> {
