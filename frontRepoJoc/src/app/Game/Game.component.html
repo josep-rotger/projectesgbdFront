@@ -7,7 +7,7 @@
           </div>
           <div class="text-container">
             <h2>Nom del Joc: {{game.name}}</h2>
-            <p>Categoria del Joc: {{game.genre}}</p>
+            <p>Categoria/es del Joc: {{ game.genre.join(', ') }}</p>
             <p>{{game.description}}</p>
           </div>
         </div>

@@ -17,8 +17,7 @@
         </div>
 
           <h3><strong>companyia:</strong> {{ game.company }}</h3>
-          <h3><strong>genre:</strong> {{ game.genre }}</h3>
-          <h3><strong>subgenre:</strong> {{ game.subgenre }}</h3>
+          <h3><strong>Categoria/es:</strong> {{ game.genre.join(', ') }}</h3>
           <h3><button class="price-button"><span class="play-icon">&#9654;</span> {{ game.price }}€</button></h3>        
 
         </div>
