@@ -30,9 +30,12 @@ export class GameListComponent implements OnInit {
   private loadGameData(): void {
     if (this.gameId !== -1) {
       this.gameService.findById(this.gameId).subscribe(
-        (game: { genre: string; }) => {
-          const genre = game.genre || '';
-          this.gameService.getGamesByGenre(genre).subscribe((games) => {
+        (game: { genre: string[]; }) => {
+          const genres = game.genre || [];
+          // Aquí puedes manejar el caso en que `genres` sea un array, por ejemplo, seleccionando el primer género.
+          const selectedGenre = genres.length > 0 ? genres[0] : '';
+  
+          this.gameService.getGamesByGenre(selectedGenre).subscribe((games) => {
             if (games && games.length) {
               this.games = games.filter((game) => game.id !== this.gameId);
             } else {
@@ -41,9 +44,15 @@ export class GameListComponent implements OnInit {
           });
         },
         (error: any) => {
-          console.error('Error al obtenir detalls del juego:', error);
+          console.error('Error al obtener detalles del juego:', error);
         }
       );
     }
+  }
+
+  reloadPage(gameId: number): void {
+    this.router.navigateByUrl(`/game-details/${gameId}`).then(() => {
+      window.location.href = this.router.url;
+    });
   }
 }
