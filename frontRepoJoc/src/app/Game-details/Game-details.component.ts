@@ -4,6 +4,7 @@ import { GameService } from '../Game/Game.service';
 import { Game } from './Game';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { Review } from '../review/Review';
 
 @Component({
   selector: 'app-game-details',
@@ -12,7 +13,9 @@ import { Router } from '@angular/router';
 })
 export class GameDetailsComponent {
   game: Game = new Game();
+  reviews: Review[] = [];
   estrelles: any[] = [];
+  gameRate: number = 0;
   constructor(private route: ActivatedRoute, private gameService: GameService, private location: Location, private router: Router) {}
 
   goBack(): void {
@@ -31,12 +34,28 @@ export class GameDetailsComponent {
       this.gameService.findById(gameId).subscribe(
         (game: Game) => {
           this.game = game;
-          this.estrelles= this.obtenirNumeroEstrelles(this.game.rating);
         },
         error => {
           console.error('Error al obtenir els detalls del joc:', error);
         }
       );
+      this.gameService.findAllReviewsByGameId(gameId).subscribe(
+        
+        (reviewIterable: Iterable<Review>) => {
+          let rating = 0;
+          // converteix un iterable a un array
+          this.reviews = Array.from(reviewIterable);
+          for (const review of this.reviews) {
+            // Access the 'rating' property of the review and add it to this.reviews
+            rating += review.rating;
+          }
+          this.gameRate = rating/this.reviews.length;
+          this.estrelles= this.obtenirNumeroEstrelles(this.gameRate);
+        },
+        error => {
+          console.error('Error al obtenir dades del joc:', error);
+        }
+      )
     } else {
       console.error('ID del joc no valid:', gameId);
     }

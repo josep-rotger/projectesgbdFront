@@ -9,10 +9,13 @@ import { GameDetailsComponent } from './Game-details/Game-details.component';
 import { RouterModule } from '@angular/router';
 import { GameListComponent } from './Game-list/Game-list.component';
 import { ReviewComponent } from './review/review.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddReviewModalComponent } from './add-review-modal/add-review-modal.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
-    AppComponent, GameComponent, GameDetailsComponent, GameListComponent, ReviewComponent,],
+    AppComponent, GameComponent, GameDetailsComponent, GameListComponent, ReviewComponent, AddReviewModalComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -20,7 +23,9 @@ import { ReviewComponent } from './review/review.component';
     RouterModule.forRoot([
       { path: '', component: GameComponent },
       { path: 'game/:gameId', component: GameDetailsComponent }
-    ])
+    ]),
+    BrowserAnimationsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

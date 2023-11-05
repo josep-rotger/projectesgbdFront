@@ -26,15 +26,6 @@ export class GameComponent implements OnInit{
         console.error('Error al obtenir dades del joc:', error);
       }
     );
-    this.gameService.findAllReviewsByGameId().subscribe(
-      (reviewIterable: Iterable<Review>) => {
-        // converteix un iterable a un array
-        this.reviews = Array.from(reviewIterable);
-      },
-      error => {
-        console.error('Error al obtenir dades del joc:', error);
-      }
-    )
   }
 
   navigateToGameDetails(gameId: number): void {

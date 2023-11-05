@@ -1,9 +1,9 @@
-import { Game } from "../Game/Game";
+
 
 export class Review {
     public id: number;
     public author: string;
-    public game: Game; // Assuming you have imported the Game class
+    public game_id: number; // Assuming you have imported the Game class
     public comment: string;
     public like: number;
     public rating: number;
@@ -11,7 +11,7 @@ export class Review {
     constructor() {
       this.id = -1;
       this.author = '';
-      this.game = new Game();
+      this.game_id = -1;
       this.comment = '';
       this.like = 0;
       this.rating = 0;
@@ -26,8 +26,8 @@ export class Review {
       return this.author;
     }
   
-    getGame(): Game {
-      return this.game;
+    getGame(): number {
+      return this.game_id;
     }
   
     getComment(): string {
@@ -51,8 +51,8 @@ export class Review {
       this.author = author;
     }
   
-    setGame(game: Game) {
-      this.game = game;
+    setGame(game_id: number) {
+      this.game_id = game_id;
     }
   
     setComment(comment: string) {

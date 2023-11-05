@@ -1,12 +1,15 @@
-<table>
-  <tr *ngFor="let rev of review">
-        <td>
-          <div class="content">
-            <!--<img src={{game.getImage()}}>-->
-            <div class="text-container">
-              <h2>{{rev.comment}}</h2>
-                <!--<span *ngFor="let estrella of obtenirNumeroEstrelles()" [class.active]="estrella.activa"></span>-->
-              </div>
-            </div>
-        </td>
-  </table>
+<h3><button class="add-review-button">Afegeix Valoracio</button></h3> 
+<h2 class="review-heading">Valoracions dels usuaris:</h2>
+<div class="review-list">
+  <div class="review" *ngFor="let rev of reviews">    
+    <div class="reviewer">
+      <span class="author">{{ rev.author }}</span>
+      <div class="rating">
+          <span *ngFor="let est of estrelles[rev.id]" [class.active]="est.activa"></span>
+      </div>
+      <span class="likes">{{ rev.like }} <button class="btn btn-like"> <fa-icon [icon]="faheart" size="lg"></fa-icon></button></span>
+    </div>
+    <div class="comment">
+      {{ rev.comment }}
+    </div>
+</div>

@@ -36,17 +36,11 @@ export class GameService {
     return this.http.get<Game>(url);
   }
 
-  findById(id: number): Observable<Game> {
-    const url = `${this.baseUrl}/findById/${id}`;
-    return this.http.get<Game>(url);
-  }
-
-  findAllReviewsByGameId():Observable<Review[]> {
-    const url = this.getFullUrl('findAllReviewsByGameId');
-    return this.http.get<any>(url).pipe(
-      map(response => response.content),
+  findAllReviewsByGameId(id : number):Observable<Iterable<Review>> {
+    const url = `${this.baseUrl}/findAllReviewsByGameId/${id}`;
+    return this.http.get<Iterable<Review>>(url).pipe(
       catchError(error => {
-        console.error('Error al obtenir dades del joc:', error);
+        console.error('Error al obtener datos del juego:', error);
         return throwError(error);
       })
     );
