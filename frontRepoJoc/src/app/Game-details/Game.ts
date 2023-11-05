@@ -2,8 +2,7 @@ export class Game {
   public id: number;
   public name: string;
   public company: string;
-  public genre: string;
-  public subgenre: string;
+  public genre: string[];
   public description: string;
   public img: string;
   public rating: number;
@@ -14,8 +13,7 @@ export class Game {
     this.id = -1;
     this.name = '';
     this.company = '';
-    this.genre = '';
-    this.subgenre = '';
+    this.genre = [];
     this.description = '';
     this.img = '';
     this.rating= -1;
@@ -42,14 +40,6 @@ export class Game {
     return this.company;
   }
 
-  getGenre(): string{
-    return this.genre;
-  }
-
-  getSubGenre(): string{
-    return this.subgenre;
-  }
-
   getDescription(): string{
     return this.description;
   }
@@ -73,14 +63,6 @@ export class Game {
 
   setCompany(company: string) {
     this.company= company;
-  }
-
-  setGenre(genre: string) {
-    this.genre= genre;
-  }
-
-  setSubgenre(subgenre: string) {
-    this.subgenre= subgenre;
   }
 
   setDescription(description: string){
