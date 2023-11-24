@@ -1,17 +1,44 @@
-<table>
-  <tr *ngFor="let game of games" (click)="navigateToGameDetails(game.id)" [routerLink]="['/game-details', game.id]">
-      <td>
-        <div class="content">
-          <div class="image-container">
-            <img *ngIf="game.img" [src]="game.img" alt="Imagen del juego">
-          </div>
-          <div class="text-container">
-            <h2>Nom del Joc: {{game.name}}</h2>
-            <p>Categoria/es del Joc: {{ game.genre.join(', ') }}</p>
-            <p>{{game.description}}</p>
-          </div>
-        </div>
-      </td>
-    </tr>
-</table>
+<div class="page-container">
+  <div class="game-list-container">
+    <table>
+      <tr *ngFor="let game of games" (click)="navigateToGameDetails(game.id)" [routerLink]="['/game-details', game.id]">
+          <td>
+            <div class="content">
+              <div class="image-container">
+                <img *ngIf="game.img" [src]="game.img" alt="Imagen del juego">
+              </div>
+              <div class="text-container">
+                <h2>Nom del Joc: {{game.name}}</h2>
+                <p>Categoria/es del Joc: {{ game.genre.join(', ') }}</p>
+                <p>{{game.description}}</p>
+              </div>
+            </div>
+          </td>
+        </tr>
+    </table>
+  </div>
+
+  <div class="filter-sidebar">
+    <!-- Aquí van els filtres -->
+    <h3>FILTRES</h3>
+    <div class="filter-item">
+      <label for="rating">Rating:</label>
+      <div class="rating-filter">
+        <span *ngFor="let star of stars" (click)="toggleStar(star)" [class.active]="star.active">&#9733;</span>
+      </div>
+
+      <div class="filter-item">
+        <label for="company">Nom de la companyia:</label>
+        <input type="text" [(ngModel)]="searchCompany" (change)="applyFilters()" placeholder="Nom de la companyia">
+      </div>
+
+      <div class="filter-item">
+        <label for="price">Preu:</label>
+        <input type="range" min="0" max="200" [(ngModel)]="searchPrice" (change)="applyFilters()" />
+        <span>{{ searchPrice }}€</span>
+      </div>
+
+    </div>
+  </div>
+</div>
   
