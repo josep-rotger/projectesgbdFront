@@ -40,7 +40,7 @@ export class GameService {
     const url = `${this.baseUrl}/findAllReviewsByGameId/${id}`;
     return this.http.get<Iterable<Review>>(url).pipe(
       catchError(error => {
-        console.error('Error al obtener datos del juego:', error);
+        console.error('Error al obtenir dades del joc:', error);
         return throwError(error);
       })
     );
@@ -58,6 +58,11 @@ export class GameService {
   deleteGame(id: number): Observable<Game> {
     const url = this.getFullUrl(`delete/${id}`);
     return this.http.delete<Game>(url);
+  }
+  
+  searchByFieldAndValue(field: string, value: string): Observable<Game[]> {
+    const url = `${this.baseUrl}/search?field=${field}&value=${value}`;
+    return this.http.get<Game[]>(url);
   }
 
 }
