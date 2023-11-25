@@ -12,10 +12,11 @@ import { ReviewComponent } from './review/review.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddReviewModalComponent } from './add-review-modal/add-review-modal.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { MatDialogModule } from '@angular/material/dialog';
-import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,10 +31,10 @@ import { MatInputModule } from '@angular/material/input';
     ]),
     BrowserAnimationsModule,
     MatDialogModule,
-    FontAwesomeModule,
     FormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
