@@ -24,6 +24,8 @@ export class GameComponent implements OnInit{
     { value: 5, active: false }
   ];
 
+  currentFilter: string = '';
+
   constructor(private gameService: GameService, private router: Router) {}
 
   ngOnInit(): void {
@@ -38,6 +40,20 @@ export class GameComponent implements OnInit{
     );
   }
 
+  resetFilters(): void {
+    this.stars = [
+      { value: 1, active: false },
+      { value: 2, active: false },
+      { value: 3, active: false },
+      { value: 4, active: false },
+      { value: 5, active: false }
+    ];
+    this.searchCompany = '';
+    this.searchRating = -1;
+    this.searchPrice = -1;
+    this.currentFilter = '';
+    this.reloadPage();
+  }
 
   toggleStar(star: any): void {
     const starIndex = this.stars.indexOf(star);
@@ -58,13 +74,21 @@ export class GameComponent implements OnInit{
   }
 
   applyFilters(): void {
+    switch (this.currentFilter.toLowerCase()) {
+      case 'company':
+        this.searchGames('Company', this.searchCompany);
+        break;
 
-    this.searchGames('Rating', this.searchRating.toString());
+      case 'price':
+        this.searchGames('Price', this.searchPrice.toString());
+        break;
 
-    this.searchGames('Company', this.searchCompany);
+      case 'rating':
+        this.searchGames('Rating', this.searchRating.toString());
+        break;
 
-    this.searchGames('Price', this.searchPrice.toString());
-
+      default: // No hi ha cap filtre seleccionat
+    }
   }
 
   searchGames(field: string, value: string): void {
@@ -72,6 +96,7 @@ export class GameComponent implements OnInit{
       (jocIterable: Iterable<Game>) => {
         // convertir un iterable a un array
         this.games = Array.from(jocIterable);
+        console.log("Mida Filtre: ", this.games.length);
       },
       error => {
         console.error('Error al buscar jocs:', error);
@@ -79,12 +104,24 @@ export class GameComponent implements OnInit{
     );
   }
 
-  loadGames() {
-    throw new Error('Method not implemented.');
-  }
-
   navigateToGameDetails(gameId: number): void {
     // navega a la pagina de detalls del joc utilitzant l'ID del joc
     this.router.navigate(['/game-details', gameId]);
+  }
+
+  reloadPage(): void {
+    window.location.reload();
+  }
+
+  setFilterCompany(): void {
+    this.currentFilter = 'company';
+  }
+  
+  setFilterPrice(): void {
+    this.currentFilter = 'price';
+  }
+  
+  setFilterRating(): void {
+    this.currentFilter = 'rating';
   }
 }
