@@ -20,8 +20,10 @@ export class ReviewComponent implements OnInit{
   estrelles: any[] = [];
   constructor(private reviewService: ReviewService, private dialogRef: MatDialog, private gameService: GameService, private location: Location, private router: Router) {
   }
-  openDialog(){
-    this.dialogRef.open(AddReviewModalComponent);
+  openDialog(game_id : any){
+    this.dialogRef.open(AddReviewModalComponent,{
+      data: {id:game_id},
+    });
   }
   range(n: number): number[] {
     return Array.from({ length: n }, (_, index) => index);

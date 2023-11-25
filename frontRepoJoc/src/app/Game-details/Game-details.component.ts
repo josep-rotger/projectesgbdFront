@@ -50,7 +50,9 @@ export class GameDetailsComponent {
             rating += review.rating;
           }
           this.gameRate = rating/this.reviews.length;
+          
           this.estrelles= this.obtenirNumeroEstrelles(this.gameRate);
+
         },
         error => {
           console.error('Error al obtenir dades del joc:', error);
