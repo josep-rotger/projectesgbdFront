@@ -1,5 +1,5 @@
 export class Game {
-  public id: number;
+  public id: string;
   public name: string;
   public company: string;
   public genre: string[];
@@ -10,7 +10,7 @@ export class Game {
 
   // Constructor
   constructor() {
-    this.id = -1;
+    this.id = '';
     this.name = '';
     this.company = '';
     this.genre = [];

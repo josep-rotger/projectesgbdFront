@@ -8,9 +8,9 @@
                 <img *ngIf="game.img" [src]="game.img" alt="Imagen del juego">
               </div>
               <div class="text-container">
-                <h2>Nom del Joc: {{game.name}}</h2>
-                <p>Categoria/es del Joc: {{ game.genre.join(', ') }}</p>
-                <p>{{game.description}}</p>
+                <h2>{{game.name}}</h2>
+                <p>Categories del Joc: {{ game.genre.join(', ') }}</p>
+                <p>{{game.company}}</p>
               </div>
             </div>
           </td>

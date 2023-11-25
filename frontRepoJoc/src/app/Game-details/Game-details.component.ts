@@ -26,10 +26,10 @@ export class GameDetailsComponent {
     const url = this.location.path(); // obtinc la URL completa
     const segments = url.split('/'); // divideixo la URL en segments
 
-    const gameIdStr = segments[segments.length - 1]; // obtinc el segment del final (ID del Game)
-    const gameId = +gameIdStr; // converteixo el ID a numero
+    const gameId = segments[segments.length - 1]; // obtinc el segment del final (ID del Game)
+    //const gameId = +gameIdStr; // converteixo el ID a numero
 
-    if (!isNaN(gameId)) {
+    if (gameId != null) {
       // si ID valid, crido al Service per obtenir els details del Game
       this.gameService.findById(gameId).subscribe(
         (game: Game) => {
