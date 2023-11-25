@@ -34,9 +34,9 @@ export class ReviewComponent implements OnInit{
     const url = this.location.path(); // obtinc la URL completa
     const segments = url.split('/'); // divideixo la URL en segments
 
-    const gameIdStr = segments[segments.length - 1]; // obtinc el segment del final (ID del Game)
-    const gameId = +gameIdStr; // converteixo el ID a n
-    if (!isNaN(gameId)) {
+    const gameId = segments[segments.length - 1]; // obtinc el segment del final (ID del Game)
+    //const gameId = +gameIdStr; // converteixo el ID a n
+    if (gameId != null) {
       this.gameService.findAllReviewsByGameId(gameId).subscribe(
         (reviewIterable: Iterable<Review>) => {
           // converteix un iterable a un array

@@ -8,7 +8,7 @@ import { Review } from '../review/Review';
   providedIn: 'root'
 })
 export class GameService {
-  getGameDetails(gameId: number) {
+  getGameDetails(gameId: string) {
     throw new Error('Method not implemented.');
   }
   private baseUrl: string = "http://localhost:8080/apis/game";
@@ -31,12 +31,12 @@ export class GameService {
     );
   }
 
-  findById(id: number): Observable<Game> {
+  findById(id: string): Observable<Game> {
     const url = `${this.baseUrl}/findById/${id}`;
     return this.http.get<Game>(url);
   }
 
-  findAllReviewsByGameId(id : number):Observable<Iterable<Review>> {
+  findAllReviewsByGameId(id : string):Observable<Iterable<Review>> {
     const url = `${this.baseUrl}/findAllReviewsByGameId/${id}`;
     return this.http.get<Iterable<Review>>(url).pipe(
       catchError(error => {
@@ -55,7 +55,7 @@ export class GameService {
     return this.http.put<Game>(url, game);
   }
 
-  deleteGame(id: number): Observable<Game> {
+  deleteGame(id: string): Observable<Game> {
     const url = this.getFullUrl(`delete/${id}`);
     return this.http.delete<Game>(url);
   }
