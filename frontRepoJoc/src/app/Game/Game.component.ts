@@ -104,7 +104,7 @@ export class GameComponent implements OnInit{
     );
   }
 
-  navigateToGameDetails(gameId: number): void {
+  navigateToGameDetails(gameId: string): void {
     // navega a la pagina de detalls del joc utilitzant l'ID del joc
     this.router.navigate(['/game-details', gameId]);
   }
