@@ -1,1 +1,18 @@
-<p>add-review-modal works!</p>
+<h2 mat-dialog-title>Valora el joc</h2>
+<mat-dialog-content style="width: 1000px;">
+  <form mat-form-field #reviewForm="ngForm">
+    <mat-form-field style="width: 100%;">
+      <textarea matInput name="comment" ngModel placeholder="Write your comment here" rows="5" class="rounded-comment"></textarea>
+    </mat-form-field>
+    <div class="star-rating">
+      <div class="rating-input">
+        <span *ngFor="let star of stars" (click)="toggleStar(star)" [class.active]="star.active">&#9733;</span>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions class="dialog-actions">
+  <button class="mat-button-cancel" (click)="closeDialog()">Cancel</button>
+  <button class="mat-button-save" (click)="saveReview(reviewForm.value)">Submit</button>
+</mat-dialog-actions>
+

@@ -7,7 +7,7 @@ import { Location } from '@angular/common';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { AddReviewModalComponent } from '../add-review-modal/add-review-modal.component';
 import { AddReviewModalService } from '../add-review-modal/add-review-modal.service';
-
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-review',
   templateUrl: './review.component.html',
@@ -18,8 +18,11 @@ export class ReviewComponent implements OnInit{
   faheart = faHeart;
   reviews: Review[] = [];
   estrelles: any[] = [];
-  constructor(private reviewService: ReviewService, private gameService: GameService, private location: Location, private router: Router) {}
-  
+  constructor(private reviewService: ReviewService, private dialogRef: MatDialog, private gameService: GameService, private location: Location, private router: Router) {
+  }
+  openDialog(){
+    this.dialogRef.open(AddReviewModalComponent);
+  }
   range(n: number): number[] {
     return Array.from({ length: n }, (_, index) => index);
   }
@@ -40,6 +43,7 @@ export class ReviewComponent implements OnInit{
           for (const review of this.reviews) {
             console.log(review.id);
             this.estrelles[review.id]=(this.obtenirNumeroEstrelles(review.rating));
+            console.log(this.estrelles[review.id]);
           }
           console.log(this.estrelles);
         },

@@ -12,6 +12,10 @@ import { ReviewComponent } from './review/review.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddReviewModalComponent } from './add-review-modal/add-review-modal.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
       { path: 'game/:gameId', component: GameDetailsComponent }
     ]),
     BrowserAnimationsModule,
-    FontAwesomeModule
+    MatDialogModule,
+    FontAwesomeModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
