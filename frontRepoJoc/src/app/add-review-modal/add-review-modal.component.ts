@@ -50,7 +50,7 @@ export class AddReviewModalComponent {
     console.log('Number of active stars:', activeStarsCount);
     
     this.addedreview ={
-      id: 1, 
+      id: '', 
       author: 'Joan',
       gameId: this.data.id,
       comment: formData,

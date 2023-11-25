@@ -17,7 +17,8 @@ import { MatDialog } from '@angular/material/dialog';
 export class ReviewComponent implements OnInit{
   faheart = faHeart;
   reviews: Review[] = [];
-  estrelles: any[] = [];
+  estrelles = new Map<string, any>();
+  //estrelles: string[] = [];
   constructor(private reviewService: ReviewService, private dialogRef: MatDialog, private gameService: GameService, private location: Location, private router: Router) {
   }
   openDialog(game_id : any){
@@ -44,8 +45,7 @@ export class ReviewComponent implements OnInit{
           console.log(this.reviews);
           for (const review of this.reviews) {
             console.log(review.id);
-            this.estrelles[review.id]=(this.obtenirNumeroEstrelles(review.rating));
-            console.log(this.estrelles[review.id]);
+            this.estrelles.set(review.id, this.obtenirNumeroEstrelles(review.rating))
           }
           console.log(this.estrelles);
         },

@@ -5,7 +5,7 @@
     <div class="reviewer">
       <span class="author">{{ rev.author }}</span>
       <div class="rating">
-          <span *ngFor="let est of estrelles[rev.id]" [class.active]="est.activa"></span>
+          <span *ngFor="let est of estrelles.get(rev.id)" [class.active]="est.activa"></span>
       </div>
       <span class="likes">{{ rev.like }} <button class="btn btn-like"> <fa-icon [icon]="faheart" size="lg"></fa-icon></button></span>
     </div>
