@@ -1,0 +1,28 @@
+<div>
+    <form #Questionary="ngForm" (ngSubmit)="register(Questionary)">
+
+        <div>
+
+            <input type="email" name="email" placeholder="Email" ngModel>
+            
+        </div>
+
+        <div>
+
+            <input type="password" name="password" placeholder="Password" ngModel>
+
+        </div>
+        <div>
+
+            <input type="password" name="confirmPassword" placeholder="Confirm password" ngModel>
+
+        </div>
+
+        <div>
+
+            <button type="submit">Register</button>
+        </div>
+
+    </form>
+
+</div>
