@@ -37,7 +37,7 @@ export class GameListComponent implements OnInit {
   
           this.gameService.getGamesByGenre(selectedGenre).subscribe((games) => {
             if (games && games.length) {
-              this.games = games.filter((game) => game.id !== this.gameId);
+              this.games = games.filter((game) => game.id !== this.gameId).slice(0, 8);
             } else {
               this.games = [];
             }
