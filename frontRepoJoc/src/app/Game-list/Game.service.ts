@@ -18,7 +18,7 @@ export class GameService {
     );
   }
   
-  findById(id: number): Observable<Game> {
+  findById(id: string): Observable<Game> {
     const url = `${this.apiUrl}/findById/${id}`;
     return this.http.get<Game>(url).pipe(
       catchError(this.handleError)

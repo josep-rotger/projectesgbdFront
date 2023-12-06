@@ -16,10 +16,14 @@ import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { LoginComponent } from './login/login.component';
+import { DataServices } from './data.services';
+import { LoginService } from './login/login.service';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
-    AppComponent, GameComponent, GameDetailsComponent, GameListComponent, ReviewComponent, AddReviewModalComponent],
+    AppComponent, GameComponent, GameDetailsComponent, GameListComponent, ReviewComponent, AddReviewModalComponent, LoginComponent, RegisterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -35,7 +39,7 @@ import { MatInputModule } from '@angular/material/input';
     MatInputModule,
     FontAwesomeModule,
   ],
-  providers: [],
+  providers: [DataServices, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

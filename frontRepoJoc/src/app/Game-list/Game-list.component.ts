@@ -12,8 +12,8 @@ import { Game } from './Game.model';
 export class GameListComponent implements OnInit {
   games: Game[] = [];
   currentUrl: string;
-  gameId: number = -1;
-  genre: string = 'Construcció';
+  gameId: string = "";
+  genre: string = "";
 
 
   constructor(private gameService: GameService, private route: ActivatedRoute, private router: Router) {
@@ -23,34 +23,34 @@ export class GameListComponent implements OnInit {
   ngOnInit(): void {
     const segments = this.currentUrl.split('/'); // divideixo la URL en segments
     const gameIdStr = segments[segments.length - 1]; // obtinc el segment del final (ID del Game)
-    this.gameId = +gameIdStr; // converteixo el ID a numero
+    this.gameId = gameIdStr; // converteixo el ID a numero
     this.loadGameData();
   }
 
   private loadGameData(): void {
-    if (this.gameId !== -1) {
+    if (this.gameId !== null) {
       this.gameService.findById(this.gameId).subscribe(
         (game: { genre: string[]; }) => {
           const genres = game.genre || [];
-          // Aquí puedes manejar el caso en que `genres` sea un array, por ejemplo, seleccionando el primer género.
+          
           const selectedGenre = genres.length > 0 ? genres[0] : '';
   
           this.gameService.getGamesByGenre(selectedGenre).subscribe((games) => {
             if (games && games.length) {
-              this.games = games.filter((game) => game.id !== this.gameId);
+              this.games = games.filter((game) => game.id !== this.gameId).slice(0, 8);
             } else {
               this.games = [];
             }
           });
         },
         (error: any) => {
-          console.error('Error al obtener detalles del juego:', error);
+          console.error('Error al obtenir detalls del joc:', error);
         }
       );
     }
   }
 
-  reloadPage(gameId: number): void {
+  reloadPage(gameId: string): void {
     this.router.navigateByUrl(`/game-details/${gameId}`).then(() => {
       window.location.href = this.router.url;
     });
