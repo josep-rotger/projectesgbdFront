@@ -3,7 +3,7 @@
 export class Review {
     public id: string;
     public author: string;
-    public gameId: number; // Assuming you have imported the Game class
+    public gameId: string; // Assuming you have imported the Game class
     public comment: string;
     public like: number;
     public rating: number;
@@ -11,7 +11,7 @@ export class Review {
     constructor() {
       this.id = '';
       this.author = '';
-      this.gameId = -1;
+      this.gameId = '';
       this.comment = '';
       this.like = 0;
       this.rating = 0;

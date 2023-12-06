@@ -6,14 +6,15 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { Review } from '../review/Review';
 import { Router } from '@angular/router';
 import { DIALOG_DATA } from '@angular/cdk/dialog';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-add-review-modal',
   templateUrl: './add-review-modal.component.html',
   styleUrls: ['./add-review-modal.component.css'],
   template: 'passed in {{ data.name }}',
 })
-export class AddReviewModalComponent { 
-  constructor(@Inject(DIALOG_DATA) public data: {id: any}, public dialogRef: MatDialogRef<AddReviewModalComponent>) {}
+export class AddReviewModalComponent {
+  constructor(@Inject(DIALOG_DATA) public data: {id: string}, public dialogRef: MatDialogRef<AddReviewModalComponent>, private http: HttpClient) {}
   addedreview: Review = new Review();
   fastar = faStar;
   selectedStars: number = 0;
@@ -42,22 +43,35 @@ export class AddReviewModalComponent {
   }
 
   saveReview(formData: any): void {
+    const baseUrl = "http://localhost:8080/apis/review";
+    const url = `${baseUrl}/addGameReview/${'NGeRB4wBwezwxefnDidp'}`;
     // Process and save the review data (comment and rating)
     // For example, you can send it to an API or perform any other actions.
-    console.log(this.data.id);
-    console.log('Review Data:', formData);
+   
     const activeStarsCount = this.stars.filter(star => star.active).length;
-    console.log('Number of active stars:', activeStarsCount);
     
     this.addedreview ={
       id: '', 
       author: 'Joan',
-      gameId: this.data.id,
+      gameId: 'NGeRB4wBwezwxefnDidp',
       comment: formData,
       like: 0,
       rating: activeStarsCount,
     };
 
+    this.http.post(url, this.addedreview)
+      .subscribe(
+        (response: any) => {
+          console.log('POST request was successful', response);
+          // Handle the response here, if needed
+        },
+        (error: any) => {
+          console.error('POST request failed', error);
+          // Handle the error here, if needed
+        }
+      );
+
+    // Emit an event to notify the parent component to close the modal
     this.dialogRef.close();
   }
 
