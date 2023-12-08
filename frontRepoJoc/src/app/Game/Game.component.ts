@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Game } from '../Game-details/Game'
 import { GameService } from './Game.service';
 import { Review } from '../review/Review';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-joc',
@@ -23,8 +24,6 @@ export class GameComponent implements OnInit{
     { value: 4, active: false },
     { value: 5, active: false }
   ];
-
-  currentFilter: string = '';
 
   constructor(private gameService: GameService, private router: Router) {}
 
@@ -51,7 +50,7 @@ export class GameComponent implements OnInit{
     this.searchCompany = '';
     this.searchRating = -1;
     this.searchPrice = -1;
-    this.currentFilter = '';
+
     this.reloadPage();
   }
 
@@ -74,34 +73,21 @@ export class GameComponent implements OnInit{
   }
 
   applyFilters(): void {
-    switch (this.currentFilter.toLowerCase()) {
-      case 'company':
-        this.searchGames('Company', this.searchCompany);
-        break;
+    const params = new HttpParams()
+    .set('company', this.searchCompany)
+    .set('rating', this.searchRating.toString())
+    .set('price', this.searchPrice.toString());
 
-      case 'price':
-        this.searchGames('Price', this.searchPrice.toString());
-        break;
-
-      case 'rating':
-        this.searchGames('Rating', this.searchRating.toString());
-        break;
-
-      default: // No hi ha cap filtre seleccionat
+  this.gameService.searchGames(params).subscribe(
+    (jocIterable: Iterable<Game>) => {
+      // convertir un iterable a un array
+      this.games = Array.from(jocIterable);
+      console.log("Mida Filtre: ", this.games.length);
+    },
+    error => {
+      console.error('Error al buscar jocs:', error);
     }
-  }
-
-  searchGames(field: string, value: string): void {
-    this.gameService.searchByFieldAndValue(field, value).subscribe(
-      (jocIterable: Iterable<Game>) => {
-        // convertir un iterable a un array
-        this.games = Array.from(jocIterable);
-        console.log("Mida Filtre: ", this.games.length);
-      },
-      error => {
-        console.error('Error al buscar jocs:', error);
-      }
-    );
+  );
   }
 
   navigateToGameDetails(gameId: string): void {
@@ -113,15 +99,4 @@ export class GameComponent implements OnInit{
     window.location.reload();
   }
 
-  setFilterCompany(): void {
-    this.currentFilter = 'company';
-  }
-  
-  setFilterPrice(): void {
-    this.currentFilter = 'price';
-  }
-  
-  setFilterRating(): void {
-    this.currentFilter = 'rating';
-  }
 }
