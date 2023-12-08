@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { Game } from '../Game-details/Game';
 import { Review } from '../review/Review';
@@ -63,6 +63,11 @@ export class GameService {
   searchByFieldAndValue(field: string, value: string): Observable<Game[]> {
     const url = `${this.baseUrl}/search?field=${field}&value=${value}`;
     return this.http.get<Game[]>(url);
+  }
+
+  searchGames(params: HttpParams): Observable<Iterable<Game>> {
+    const url = `${this.baseUrl}/search`;
+    return this.http.get<Iterable<Game>>(url, { params });
   }
 
 }
