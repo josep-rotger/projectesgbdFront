@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -12,6 +12,7 @@ body {
     border: 2px solid #ddd; /* Color del borde */
     border-radius: 10px; /* radi costats rodons */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* ombra resaltada */
+    backdrop-filter: blur(40px); /* filtre de desenfocament */
 }
 
 .text-container {
@@ -20,11 +21,16 @@ body {
 }
 
 h2 {
-    color: #333;
+    color: #ffffff;
+}
+
+h3 {
+  font-family: 'Poppins', sans-serif;
+  color: white;
 }
 
 p {
-    color: #666;
+    color: lightgrey;
 }
 
 .rating {
@@ -59,12 +65,15 @@ p {
   .filter-sidebar {
     width: 250px;
     padding: 20px;
-    border-left: 1px solid #ccc; /* línia entre filtres i jocs */
-    background-color: #8133ff;
+    border: 1px solid #ccc; /* línia entre filtres i jocs */
+    border-radius: 16px;
+    backdrop-filter: blur(20px);
   }
   
   .filter-item {
     margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+    color: white;
   }
   
   .game-list-container {
