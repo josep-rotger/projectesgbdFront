@@ -4,19 +4,19 @@
     <div class="content">
       <div class="image-container">
         <img *ngIf="game.img" [src]="game.img" alt="Imagen del juego">
-        <h3><strong>Descripció:</strong> {{ game.description }}</h3>
+        <h3> {{ game.description }} </h3>
       </div>
 
       <div class="details-container">
         <div class="info-container">
           <div class="name-rating-container">
-          <h1><strong>Nom:</strong> {{ game.name }}</h1>
+          <h1> {{ game.name }} </h1>
           <div class="rating">
             <span *ngFor="let estrella of estrelles" [class.active]="estrella.activa"></span>
           </div>
         </div>
 
-          <h3><strong>companyia:</strong> {{ game.company }}</h3>
+          <h3> {{ game.company }} </h3>
           <h3><strong>Categoria/es:</strong> {{ game.genre.join(', ') }}</h3>
           <h3><button class="price-button"><span class="play-icon">&#9654;</span> {{ game.price }}€</button></h3>        
 
