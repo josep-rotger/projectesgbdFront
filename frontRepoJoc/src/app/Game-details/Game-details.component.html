@@ -1,6 +1,5 @@
 <div>
   <div *ngIf="game">
-    <button class="back-button" (click)="goBack()">Torna a la llista de Jocs</button>
     <div class="content">
       <div class="image-container">
         <img *ngIf="game.img" [src]="game.img" alt="Imagen del juego">
@@ -8,6 +7,7 @@
       </div>
 
       <div class="details-container">
+        <button class="back-button" (click)="goBack()">Torna a la llista de Jocs</button>
         <div class="info-container">
           <div class="name-rating-container">
           <h1> {{ game.name }} </h1>

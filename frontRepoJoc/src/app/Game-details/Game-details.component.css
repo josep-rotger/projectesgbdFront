@@ -26,17 +26,17 @@
   
   .rating {
     display: inline-block;
-    font-size: 24px; /* Mida de les estrelles */
+    font-size: 30px; /* Mida de les estrelles */
     margin-left: 30px;
   }
   
   .rating span {
-    margin-right: 3px; /* Ajusta el espacio entre las estrellas */
+    margin-right: 3px; /* Ajusta l'espai entre les estrelles */
   }
 
   .rating span:before {
     content: "\2605"; /* Codi Unicode per una estrella solida */
-    color: #ddd; /* Color de les estrelles desactivades */
+    color: #ffffff; /* Color de les estrelles desactivades */
   }
 
   .rating span.active:before {
@@ -99,8 +99,8 @@
   
   .back-button {
     position: absolute;
-    top: 120px;
-    right: 80px;
+    top: 20px;
+    right: 20px;
     font-size: 12px;
     background-color: rgb(107, 136, 233); /* Color azul claro */
     padding: 15px 15px;
@@ -108,6 +108,7 @@
     border-radius: 5px;
     cursor: pointer;
     color: white; /* Color del texto del botón */
+    border: 2px solid #fff; /* Color del borde */
   }
   
   
