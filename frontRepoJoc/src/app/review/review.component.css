@@ -10,6 +10,8 @@
   }
   .review-heading{
     margin-top: 50px;
+    font-family: 'Poppins', sans-serif;
+    color: white;
   }
   .add-review-button {
     position: absolute;

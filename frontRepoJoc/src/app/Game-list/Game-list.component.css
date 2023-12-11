@@ -8,6 +8,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-left: 50px;
     margin-right: 50px;
+    backdrop-filter: blur(20px);
   }
   
   .game-item {
@@ -22,6 +23,9 @@
     margin-left: 20px;
     width: 150px; 
     text-align: center; 
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    backdrop-filter: blur(20px);
   }
 
   .game-item img {
@@ -37,4 +41,6 @@
   .interest-heading {
    margin-left: 80px;
    margin-bottom: 10px;
+   font-family: 'Poppins', sans-serif;
+   color: white;
   }

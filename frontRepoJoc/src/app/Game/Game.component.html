@@ -24,24 +24,25 @@
     <div class="filter-item">
       <label for="rating">Rating:</label>
       <div class="rating-filter">
-        <span *ngFor="let star of stars" (click)="setFilterRating(); toggleStar(star)" [class.active]="star.active">&#9733;</span>
+        <span *ngFor="let star of stars" (click)="toggleStar(star)" [class.active]="star.active">&#9733;</span>
       </div>
-
+      <br>
+      <br>
       <div class="filter-item">
         <label for="company">Nom de la companyia:</label>
-        <input type="text" [(ngModel)]="searchCompany" (change)="setFilterCompany(); applyFilters()" placeholder="Nom de la companyia">
+        <input type="text" [(ngModel)]="searchCompany" (change)="applyFilters()" placeholder="Name">
       </div>
-
+      <br>
+      <br>
       <div class="filter-item">
         <label for="price">Preu:</label>
-        <input type="range" min="0" max="200" [(ngModel)]="searchPrice" (change)="setFilterPrice(); applyFilters()" />
+        <input type="range" min="0" max="200" [(ngModel)]="searchPrice" (change)="applyFilters()" />
         <span>{{ searchPrice }}€</span>
       </div>
-
-      <div class="filter-item">
-        <button (click)="resetFilters()">Restablir Filtres</button>
-      </div>
-
+    </div>
+    <br>
+    <div class="filter-item">
+      <button (click)="resetFilters()">↻ Restablir Filtres</button>
     </div>
   </div>
 </div>

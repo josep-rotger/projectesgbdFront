@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    background-image: url('assets/background.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-color: rgb(9, 11, 59);
+    font-family: 'Montserrat', sans-serif;
+}

@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -8,10 +8,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 0px;
     border: 2px solid #ddd; /* Color del borde */
     border-radius: 10px; /* radi costats rodons */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* ombra resaltada */
+    backdrop-filter: blur(40px); /* filtre de desenfocament */
 }
 
 .text-container {
@@ -20,16 +21,30 @@ body {
 }
 
 h2 {
-    color: #333;
+    color: #ffffff;
+}
+
+h3 {
+  font-family: 'Pacifico', cursive;
+  color: #eea25c;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+input[type="text"] {
+  width: 250px;
+  padding: 2px;
+  font-size: 1.05em;
 }
 
 p {
-    color: #666;
+    color: lightgrey;
 }
 
 .rating {
     display: inline-block;
-    font-size: 24px; /* Mida de les estrelles */
+    font-size: 25px; /* Mida de les estrelles */
   }
   
   .rating span:before {
@@ -57,14 +72,21 @@ p {
   }
   
   .filter-sidebar {
-    width: 250px;
+    width: 270px;
     padding: 20px;
-    border-left: 1px solid #ccc; /* línia entre filtres i jocs */
-    background-color: #8133ff;
+    border: 3px solid #ccc; /* línia entre filtres i jocs */
+    border-radius: 16px;
+    backdrop-filter: blur(20px);
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
   }
   
   .filter-item {
     margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    font-weight: bold;
   }
   
   .game-list-container {
@@ -110,3 +132,24 @@ p {
     font-weight: bold;
   }
   
+  button {
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: 700;
+    border: 2px solid #fff;
+    border-radius: 6px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    float: right;
+
+  }
+  
+  button:hover {
+    transform: scale(1.1);
+    background-color: #333;
+    border-color: orange;
+  }

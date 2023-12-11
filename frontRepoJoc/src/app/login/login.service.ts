@@ -10,7 +10,7 @@ import 'firebase/compat/auth'
 export class LoginService{
 
   constructor(private router:Router){
-    this.token = '';
+    this.token = window.localStorage.getItem('token') || ''; // Recuperar el token de localStorage
     this.window = window;
   }
   
@@ -19,14 +19,12 @@ export class LoginService{
   window: Window;
 
   login(email:string, password:string){
-
     firebase.auth().signInWithEmailAndPassword(email, password).then(
-
       response=>{
         firebase.auth().currentUser?.getIdToken().then(
-
           token=>{
             this.token=token;
+            this.window.localStorage.setItem('token', token); // Emmagatzemar el token en localStorage
             this.router.navigate(['/']);
           }
         )
@@ -114,6 +112,7 @@ export class LoginService{
     firebase.auth().signOut().then(()=>{
 
       this.token="";
+      this.window.localStorage.removeItem('token'); // Eliminar el token de localStorage
       this.router.navigate(['/']);
 
     });

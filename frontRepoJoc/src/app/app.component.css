@@ -1,24 +1,54 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
+    background-color: transparent;
+    background-image: none;
 }
 body, html {
     height: 100%;
 }
 
 header {
-    background-color: #8133ff; /* color fons del header */
     color: #fff;
     text-align: center;
 }
 
 h1 {
+    font-family: 'Pacifico', cursive;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     margin: 0;
-    color: #fff; /* color texte */
-    font-size: 2em; /* tamany del texte */
+    text-align: center;
+    color: #eea25c; /* color texte */
+    font-size: 3em; /* tamany del texte */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* ombra del texte */
     line-height: 1; /* Ajusta este valor según sea necesario */
+}
+
+.login-class {
+    display: flex;
+    margin-right: 20px;
+    float: right;
+}
+
+.login {
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    text-align: center;
+    font-size: 1.1em; /* tamany del texte */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* ombra del texte */
+    font-weight: 700;
+    border: 2px solid #fff; /* Color del borde */
+    border-radius: 6px;
+    padding: 8px;
+    width: 100px; 
+    height: 20px;
+    margin-right: 20px;
+    backdrop-filter: blur(20px);
+    cursor: pointer;
+    float: right;
 }
 
 .header-icons {
@@ -41,7 +71,7 @@ h1 {
 .cart-icon {
     font-size: 20px;
     color: #fff;
-    margin: 0 10px;
+    margin: 10px;
     cursor: pointer;
 }
   
