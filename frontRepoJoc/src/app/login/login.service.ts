@@ -34,24 +34,66 @@ export class LoginService{
     );
   }
 
-  register(email:string, password:string, confirmPassword:string) {
-    if(password == confirmPassword){
-      return firebase.auth().createUserWithEmailAndPassword(email, password).then(
+  // register(email:string, password:string, confirmPassword:string) {
+  //   if(password == confirmPassword){
+  //     return firebase.auth().createUserWithEmailAndPassword(email, password).then(
       
-      response => {
-        this.login(email, password);
-      }
-      )
-      .catch(error => {
-        this.window.alert('Error: ' + error.message);
-      });
-    }
-    else{
-      this.window.alert('Error: Passwords don\'t match');
+  //     response => {
+  //       response.additionalUserInfo?.username
+  //       this.login(email, password);
+  //     }
+  //     )
+  //     .catch(error => {
+  //       this.window.alert('Error: ' + error.message);
+  //     });
+  //   }
+  //   else{
+  //     this.window.alert('Error: Passwords don\'t match');
+  //     return -1;
+  //   }
+  // }
+  register(email:string, password:string, confirmPassword:string, username:string) {
+    if (password === confirmPassword) {
+      return firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then(response => {
+          
+          this.setDisplayName(username);
+          // You can also call this.login inside setDisplayName if needed
+          this.login(email, password);
+          
+        })
+        .catch(error => {
+          window.alert('Error: ' + error.message);
+        });
+    } else {
+      window.alert('Error: Passwords don\'t match');
       return -1;
     }
   }
-
+  
+  setDisplayName(displayName: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const user = firebase.auth().currentUser;
+  
+      if (user) {
+        user.updateProfile({
+          displayName: displayName
+        }).then(() => {
+          console.log('Display name set successfully');
+          resolve(); // Resolve the promise on success
+        }).catch(error => {
+          console.error('Error setting display name: ', error);
+          reject(error); // Reject the promise on error
+        });
+      } else {
+        console.error('No user is currently logged in');
+        reject(new Error('No user is currently logged in')); // Reject the promise if no user is logged in
+      }
+    });
+  }
+  getDisplayName(){
+    return firebase.auth().currentUser?.displayName;
+  }
   getIdToken(){
     return this.token;
   }
@@ -59,7 +101,15 @@ export class LoginService{
   isLogged(){
     return this.token;
   }
-
+  checkLoginStatus(){
+    if(this.isLogged() != null){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+  
   logout(){
     firebase.auth().signOut().then(()=>{
 

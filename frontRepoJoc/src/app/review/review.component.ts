@@ -8,6 +8,8 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { AddReviewModalComponent } from '../add-review-modal/add-review-modal.component';
 import { AddReviewModalService } from '../add-review-modal/add-review-modal.service';
 import { MatDialog } from '@angular/material/dialog';
+import { LoginService } from '../login/login.service';
+
 @Component({
   selector: 'app-review',
   templateUrl: './review.component.html',
@@ -17,43 +19,53 @@ import { MatDialog } from '@angular/material/dialog';
 export class ReviewComponent implements OnInit{
   faheart = faHeart;
   reviews: Review[] = [];
-  estrelles: any[] = [];
-  constructor(private reviewService: ReviewService, private dialogRef: MatDialog, private gameService: GameService, private location: Location, private router: Router) {
+  estrelles = new Map<string, any>();
+  gameID: string | undefined;
+  userid: string | undefined | null;
+  //estrelles: string[] = [];
+  constructor(private reviewService: ReviewService, private dialogRef: MatDialog, private gameService: GameService, private location: Location, private loginService: LoginService) {
   }
-  openDialog(){
-    this.dialogRef.open(AddReviewModalComponent);
+  openDialog(gameID: string | undefined){
+    this.dialogRef.open(AddReviewModalComponent,{
+      data: {id:gameID, userID: this.userid},
+    });
   }
   range(n: number): number[] {
     return Array.from({ length: n }, (_, index) => index);
   }
 
   ngOnInit(): void {
-    
-    const url = this.location.path(); // obtinc la URL completa
-    const segments = url.split('/'); // divideixo la URL en segments
-
-    const gameId = segments[segments.length - 1]; // obtinc el segment del final (ID del Game)
-    //const gameId = +gameIdStr; // converteixo el ID a n
-    if (gameId != null) {
-      this.gameService.findAllReviewsByGameId(gameId).subscribe(
-        (reviewIterable: Iterable<Review>) => {
-          // converteix un iterable a un array
-          this.reviews = Array.from(reviewIterable);
-          console.log(this.reviews);
-          for (const review of this.reviews) {
-            console.log(review.id);
-            this.estrelles[review.id]=(this.obtenirNumeroEstrelles(review.rating));
-            console.log(this.estrelles[review.id]);
-          }
-          console.log(this.estrelles);
-        },
-        error => {
-          console.error('Error al obtenir dades del joc:', error);
-        }
-      )
-    }
+      this.refreshGetReviews();
+  }
    
-
+    public refreshGetReviews(){
+      const url = this.location.path(); // obtinc la URL completa
+      const segments = url.split('/'); // divideixo la URL en segments
+      if(this.loginService.isLogged()){
+        console.log("Inicialitzat")
+        console.log(this.loginService.getDisplayName());
+        this.userid = this.loginService.getDisplayName();
+      }
+      const gameId = segments[segments.length - 1]; // obtinc el segment del final (ID del Game)
+      //const gameId = +gameIdStr; // converteixo el ID a n
+      if (gameId != null) {
+        this.gameID = gameId;
+        this.gameService.findAllReviewsByGameId(gameId).subscribe(
+          (reviewIterable: Iterable<Review>) => {
+            // converteix un iterable a un array
+            this.reviews = Array.from(reviewIterable);
+            console.log(this.reviews);
+            for (const review of this.reviews) {
+              console.log(review.id);
+              this.estrelles.set(review.id, this.obtenirNumeroEstrelles(review.rating))
+            }
+            console.log(this.estrelles);
+          },
+          error => {
+            console.error('Error al obtenir dades del joc:', error);
+          }
+        )
+      }
     // this.reviewService.findAll().subscribe(
     //   (reviewIterable: Iterable<Review>) => {
     //     // converteix un iterable a un array
@@ -74,4 +86,3 @@ export class ReviewComponent implements OnInit{
     return estrelles;
   }
 }
-

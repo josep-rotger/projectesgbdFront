@@ -18,13 +18,15 @@ export class RegisterComponent {
   }
 
   register(form:NgForm){
+    const username=form.value.username;
+
     const email=form.value.email
 
     const password=form.value.password
 
     const confirmPassword=form.value.confirmPassword
 
-    this.loginService.register(email, password, confirmPassword);
+    this.loginService.register(email, password, confirmPassword, username);
     
   }
 
