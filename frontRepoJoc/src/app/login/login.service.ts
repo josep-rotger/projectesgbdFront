@@ -29,6 +29,10 @@ export class LoginService{
             if (user) {
               const displayName = user.displayName || '';
               localStorage.setItem('username', displayName);
+              var userspan = document.getElementById('nameUser');
+              if(userspan){
+                userspan.textContent = localStorage.getItem("username")
+              }
             }
             this.router.navigate(['/']);
           }
@@ -85,6 +89,7 @@ export class LoginService{
         }).then(() => {
           console.log('Display name set successfully');
           this.login(email, password);
+          
           resolve(); // Resolve the promise on success
         }).catch(error => {
           console.error('Error setting display name: ', error);

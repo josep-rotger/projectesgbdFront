@@ -26,11 +26,10 @@ export class AddReviewModalService {
     this.http.post(url, reviewWithoutId, { headers })
       .subscribe(
          (response: any) => {
-          console.log('POST request was successful', response);
+         
           // Handle the response here, if needed
         },
         (error: any) => {
-          console.error('POST request failed', error);
           // Handle the error here, if needed
         }
       );

@@ -46,9 +46,6 @@ export class AddReviewModalComponent {
   }
 
   saveReview(formData: any): void {
-
-    const baseUrl = "http://localhost:8080/apis/review";
-    const url = `${baseUrl}/addGameReview/${this.data.id}`;
     // Process and save the review data (comment and rating)
     // For example, you can send it to an API or perform any other actions.
     this.userid = localStorage.getItem("username") || '';

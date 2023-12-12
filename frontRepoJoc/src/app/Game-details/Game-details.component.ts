@@ -50,6 +50,8 @@ export class GameDetailsComponent {
             rating += review.rating;
           }
           this.gameRate = rating/this.reviews.length;
+          let intGameRate: number = Math.floor(this.gameRate);
+          this.gameService.setRating(gameId, intGameRate);
           this.estrelles= this.obtenirNumeroEstrelles(this.gameRate);
         },
         error => {

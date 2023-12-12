@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { Game } from '../Game-details/Game';
 import { Review } from '../review/Review';
@@ -20,6 +20,23 @@ export class GameService {
     return `${this.baseUrl}/${endpoint}`;
   }
 
+  setRating(gameId: string, gameRate: number) {
+    console.log("Ha entrat a setRating")
+    const url = `${this.baseUrl}/setGameRating/${gameId}?rating=${gameRate}`;
+    const headers = new HttpHeaders({
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    });
+    this.http.put(url, null, { headers })
+        .subscribe(
+            (response: any) => {
+                // Handle the response here, if needed
+            },
+            (error: any) => {
+                // Handle the error here, if needed
+            }
+        );
+  }
   findAll(): Observable<Game[]> {
     const url = this.getFullUrl('findAll');
     return this.http.get<any>(url).pipe(

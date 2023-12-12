@@ -40,6 +40,12 @@ export class AppComponent {
   }
 
   logout(){
+    var mySpan = document.getElementById('nameUser');
+    localStorage.removeItem("username");
+      // Set the text content of the span
+    if(mySpan){
+        mySpan.textContent = "";
+    }
     this.loginService.logout();
   }
 
