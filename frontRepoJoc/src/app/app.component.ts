@@ -28,7 +28,11 @@ export class AppComponent {
       authDomain: "sgbd-cd49c.firebaseapp.com",
       
     });
-
+    var mySpan = document.getElementById('nameUser');
+    // Set the text content of the span
+    if(mySpan){
+      mySpan.textContent = localStorage.getItem("username");
+    }
   }
 
   isLogged(){
