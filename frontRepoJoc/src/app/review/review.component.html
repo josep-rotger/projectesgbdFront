@@ -1,4 +1,4 @@
-<h3><button (click)="openDialog(gameID)" class="add-review-button">Afegeix Valoracio</button></h3> 
+<h3><button id="add-rev" (click)="openDialog(gameID)" class="add-review-button">Afegeix Valoracio</button></h3> 
 <h2 class="review-heading">Valoracions dels usuaris:</h2>
 <div class="review-list">
   <div class="review" *ngFor="let rev of reviews">    
@@ -7,7 +7,6 @@
       <div class="rating">
           <span *ngFor="let est of estrelles.get(rev.id)" [class.active]="est.activa"></span>
       </div>
-      <span class="likes">{{ rev.like }} <button class="btn btn-like"> <fa-icon [icon]="faheart" size="lg"></fa-icon></button></span>
     </div>
     <div class="comment">
       {{ rev.comment }}

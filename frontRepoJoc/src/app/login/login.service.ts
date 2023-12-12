@@ -25,6 +25,11 @@ export class LoginService{
           token=>{
             this.token=token;
             this.window.localStorage.setItem('token', token); // Emmagatzemar el token en localStorage
+            const user = firebase.auth().currentUser;
+            if (user) {
+              const displayName = user.displayName || '';
+              localStorage.setItem('username', displayName);
+            }
             this.router.navigate(['/']);
           }
         )
@@ -55,9 +60,10 @@ export class LoginService{
       return firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(response => {
           
-          this.setDisplayName(username);
+          this.setDisplayName(username, email, password);
+          //localStorage.setItem('username', username);
           // You can also call this.login inside setDisplayName if needed
-          this.login(email, password);
+          //this.login(email, password);
           
         })
         .catch(error => {
@@ -69,7 +75,7 @@ export class LoginService{
     }
   }
   
-  setDisplayName(displayName: string): Promise<void> {
+  setDisplayName(displayName: string, email:string, password:string): Promise<void> {
     return new Promise((resolve, reject) => {
       const user = firebase.auth().currentUser;
   
@@ -78,6 +84,7 @@ export class LoginService{
           displayName: displayName
         }).then(() => {
           console.log('Display name set successfully');
+          this.login(email, password);
           resolve(); // Resolve the promise on success
         }).catch(error => {
           console.error('Error setting display name: ', error);
@@ -90,7 +97,7 @@ export class LoginService{
     });
   }
   getDisplayName(){
-    return firebase.auth().currentUser?.displayName;
+    return firebase.auth().currentUser?.email;
   }
   getIdToken(){
     return this.token;

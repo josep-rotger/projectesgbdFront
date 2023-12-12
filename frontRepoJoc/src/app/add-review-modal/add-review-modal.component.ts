@@ -16,8 +16,9 @@ import { ReviewService } from '../review/review.service';
   template: 'passed in {{ data.name }}',
 })
 export class AddReviewModalComponent {
-  constructor(@Inject(DIALOG_DATA) public data: {id: string, userid:string}, public dialogRef: MatDialogRef<AddReviewModalComponent>, private addreviewService: AddReviewModalService, private reviewService: ReviewService) {}
+  constructor(@Inject(DIALOG_DATA) public data: {id: string}, public dialogRef: MatDialogRef<AddReviewModalComponent>, private addreviewService: AddReviewModalService, private reviewService: ReviewService) {}
   addedreview: Review = new Review();
+  userid:string | undefined;
   fastar = faStar;
   selectedStars: number = 0;
   stars = [
@@ -45,17 +46,16 @@ export class AddReviewModalComponent {
   }
 
   saveReview(formData: any): void {
-    console.log()
-    console.log(this.data.id);
+
     const baseUrl = "http://localhost:8080/apis/review";
     const url = `${baseUrl}/addGameReview/${this.data.id}`;
     // Process and save the review data (comment and rating)
     // For example, you can send it to an API or perform any other actions.
-   
+    this.userid = localStorage.getItem("username") || '';
     const activeStarsCount = this.stars.filter(star => star.active).length;
     this.addedreview ={
       id:"",
-      author: this.data.userid,
+      author: this.userid,
       gameId: this.data.id,
       comment: formData.comment,
       like: 0,
