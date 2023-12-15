@@ -11,9 +11,10 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   styleUrls: ['./Game.component.css']
 })
 export class GameComponent implements OnInit{
-  
+
   games: Game[] = [];
   reviews: Review[] = [];
+  searchName: string = '';
   searchCompany: string = '';
   searchRating: number = -1;
   searchPrice: number = -1;
@@ -74,6 +75,7 @@ export class GameComponent implements OnInit{
 
   applyFilters(): void {
     const params = new HttpParams()
+      .set ('name', this.searchName)
     .set('company', this.searchCompany)
     .set('rating', this.searchRating.toString())
     .set('price', this.searchPrice.toString());
@@ -94,9 +96,9 @@ export class GameComponent implements OnInit{
     // navega a la pagina de detalls del joc utilitzant l'ID del joc
     this.router.navigate(['/game-details', gameId]);
   }
-
   reloadPage(): void {
     window.location.reload();
   }
+
 
 }

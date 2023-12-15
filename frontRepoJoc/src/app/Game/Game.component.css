@@ -1,155 +1,155 @@
 body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0px;
-    border: 2px solid #ddd; /* Color del borde */
-    border-radius: 10px; /* radi costats rodons */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* ombra resaltada */
-    backdrop-filter: blur(40px); /* filtre de desenfocament */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px;
+  border: 2px solid #ddd; /* Color del borde */
+  border-radius: 10px; /* radi costats rodons */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* ombra resaltada */
+  backdrop-filter: blur(40px); /* filtre de desenfocament */
 }
 
 .text-container {
-    padding-left: 10px;
-    flex: 1;
+  padding-left: 10px;
+  flex: 1;
 }
 
 h2 {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 h3 {
-  font-family: 'Pacifico', cursive;
-  color: #eea25c;
-  text-align: center;
-  font-size: 1.5em;
-  font-weight: bold;
+font-family: 'Pacifico', cursive;
+color: #eea25c;
+text-align: center;
+font-size: 1.5em;
+font-weight: bold;
 }
 
 input[type="text"] {
-  width: 250px;
-  padding: 2px;
-  font-size: 1.05em;
+width: 250px;
+padding: 2px;
+font-size: 1.05em;
 }
 
 p {
-    color: lightgrey;
+  color: lightgrey;
 }
 
 .rating {
-    display: inline-block;
-    font-size: 25px; /* Mida de les estrelles */
-  }
-  
-  .rating span:before {
-    content: "\2605"; /* Codi Unicode per una estrella solida */
-    color: #ddd; /* Color de les estrelles desactivades */
-  }
-  
-  .rating span.active:before {
-    color: orange; /* Color de les estrelles activades */
-  }
+  display: inline-block;
+  font-size: 25px; /* Mida de les estrelles */
+}
 
-  .image-container {
-    max-width: 200px;
-    max-height: 200px;
-    overflow: hidden;
-  }
-  
-  .image-container img {
-    width: 100%;
-    height: auto;
-  }
+.rating span:before {
+  content: "\2605"; /* Codi Unicode per una estrella solida */
+  color: #ddd; /* Color de les estrelles desactivades */
+}
 
-  .page-container {
-    display: flex;
-  }
-  
-  .filter-sidebar {
-    width: 270px;
-    padding: 20px;
-    border: 3px solid #ccc; /* línia entre filtres i jocs */
-    border-radius: 16px;
-    backdrop-filter: blur(20px);
-    justify-content: center;
-    align-items: center;
-    margin-right: 15px;
-  }
-  
-  .filter-item {
-    margin-bottom: 10px;
-    font-family: 'Poppins', sans-serif;
-    color: white;
-    font-weight: bold;
-  }
-  
-  .game-list-container {
-    flex: 1;
-    padding: 20px;
-  }
+.rating span.active:before {
+  color: orange; /* Color de les estrelles activades */
+}
 
-  .rating-filter {
-    display: flex;
-  }
-  
-  .rating-filter span {
-    font-size: 24px;
-    cursor: pointer;
-    margin-right: 5px;
-  }
-  
-  .rating-filter span.active {
-    color: orange;
-  }
+.image-container {
+  max-width: 200px;
+  max-height: 200px;
+  overflow: hidden;
+}
 
-  .filter-sidebar {
-    padding: 10px;
-    color: white;
-    height: 100%;
-  }
-  
-  .filter-item {
-    margin-bottom: 15px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  input[type="range"] {
-    width: 100%;
-  }
-  
-  span {
-    margin-left: 10px;
-    font-weight: bold;
-  }
-  
-  button {
-    font-family: 'Poppins', sans-serif;
-    color: #ffffff;
-    text-align: center;
-    font-size: 1.2em;
-    font-weight: 700;
-    border: 2px solid #fff;
-    border-radius: 6px;
-    background-color: transparent;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    float: right;
+.image-container img {
+  width: 100%;
+  height: auto;
+}
 
-  }
-  
-  button:hover {
-    transform: scale(1.1);
-    background-color: #333;
-    border-color: orange;
-  }
+.page-container {
+  display: flex;
+}
+
+.filter-sidebar {
+  width: 270px;
+  padding: 20px;
+  border: 3px solid #ccc; /* línia entre filtres i jocs */
+  border-radius: 16px;
+  backdrop-filter: blur(20px);
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.filter-item {
+  margin-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  font-weight: bold;
+}
+
+.game-list-container {
+  flex: 1;
+  padding: 20px;
+}
+
+.rating-filter {
+  display: flex;
+}
+
+.rating-filter span {
+  font-size: 24px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.rating-filter span.active {
+  color: orange;
+}
+
+.filter-sidebar {
+  padding: 10px;
+  color: white;
+  height: 100%;
+}
+
+.filter-item {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="range"] {
+  width: 100%;
+}
+
+span {
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+button {
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 700;
+  border: 2px solid #fff;
+  border-radius: 6px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  float: right;
+
+}
+
+button:hover {
+  transform: scale(1.1);
+  background-color: #333;
+  border-color: orange;
+}
