@@ -2,19 +2,19 @@
   <div class="game-list-container">
     <table>
       <tr *ngFor="let game of games" (click)="navigateToGameDetails(game.id)" [routerLink]="['/game-details', game.id]">
-          <td>
-            <div class="content">
-              <div class="image-container">
-                <img *ngIf="game.img" [src]="game.img" alt="Imagen del juego">
-              </div>
-              <div class="text-container">
-                <h2>{{game.name}}</h2>
-                <p>Categories: {{ game.genre.join(', ') }}</p>
-                <p>{{game.company}}</p>
-              </div>
+        <td>
+          <div class="content">
+            <div class="image-container">
+              <img *ngIf="game.img" [src]="game.img" alt="Imagen del juego">
             </div>
-          </td>
-        </tr>
+            <div class="text-container">
+              <h2>{{game.name}}</h2>
+              <p>Categories: {{ game.genre.join(', ') }}</p>
+              <p>{{game.company}}</p>
+            </div>
+          </div>
+        </td>
+      </tr>
     </table>
   </div>
 
@@ -26,24 +26,27 @@
       <div class="rating-filter">
         <span *ngFor="let star of stars" (click)="toggleStar(star)" [class.active]="star.active">&#9733;</span>
       </div>
-      <br>
-      <br>
-      <div class="filter-item">
-        <label for="company">Nom de la companyia:</label>
-        <input type="text" [(ngModel)]="searchCompany" (change)="applyFilters()" placeholder="Name">
-      </div>
-      <br>
-      <br>
-      <div class="filter-item">
-        <label for="price">Preu:</label>
-        <input type="range" min="0" max="200" [(ngModel)]="searchPrice" (change)="applyFilters()" />
-        <span>{{ searchPrice }}€</span>
-      </div>
     </div>
-    <br>
+
+    <!-- Barra de búsqueda por nombre -->
+    <div class="filter-item">
+      <label for="gameName">Nom del joc:</label>
+      <input type="text" [(ngModel)]="searchName" (change)="applyFilters()" placeholder="Nom del joc">
+    </div>
+
+    <div class="filter-item">
+      <label for="company">Nom de la companyia:</label>
+      <input type="text" [(ngModel)]="searchCompany" (change)="applyFilters()" placeholder="Nom de la companyia">
+    </div>
+
+    <div class="filter-item">
+      <label for="price">Preu:</label>
+      <input type="range" min="0" max="200" [(ngModel)]="searchPrice" (change)="applyFilters()" />
+      <span>{{ searchPrice }}€</span>
+    </div>
+
     <div class="filter-item">
       <button (click)="resetFilters()">↻ Restablir Filtres</button>
     </div>
   </div>
 </div>
-  
