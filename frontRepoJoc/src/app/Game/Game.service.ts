@@ -21,7 +21,6 @@ export class GameService {
   }
 
   setRating(gameId: string, gameRate: number) {
-    console.log("Ha entrat a setRating")
     const url = `${this.baseUrl}/setGameRating/${gameId}?rating=${gameRate}`;
     const headers = new HttpHeaders({
       'Accept': 'application/json',

@@ -49,8 +49,14 @@ export class GameDetailsComponent {
             // Access the 'rating' property of the review and add it to this.reviews
             rating += review.rating;
           }
-          this.gameRate = rating/this.reviews.length;
-          let intGameRate: number = Math.floor(this.gameRate);
+          let intGameRate: number = 0;
+          if(rating == 0){
+            this.gameRate = 0;
+          }
+          else{
+             this.gameRate = rating/this.reviews.length;
+             intGameRate = Math.floor(this.gameRate);
+          }
           this.gameService.setRating(gameId, intGameRate);
           this.estrelles= this.obtenirNumeroEstrelles(this.gameRate);
         },
